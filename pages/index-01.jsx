@@ -43,9 +43,26 @@ const Index1 = () => {
         id="navbar-collapse-toggle"
       >
         <div className="navbar-brand">
-          <a className="logo-text" href="index.html">
+          {/* <a className="logo-text" href="index.html">
             Tony
-          </a>
+          </a> */}
+          <>
+            <Form.Group controlId="formBasicSelect">
+              {/* <Form.Label>Leng</Form.Label> */}
+              
+              <Form.Control
+                as="select"
+                onChange={e => {
+                  console.log("e.target.value", e.target.value);
+                  // setType(e.target.value);
+                }}
+              >              
+                <option value="spain">Es</option>
+                <option value="inglish">En</option>
+                <option value="french">Fr</option>
+              </Form.Control>
+            </Form.Group>
+          </>
         </div>
         <ul className="nav nav-ul">
           <li>
@@ -84,25 +101,29 @@ const Index1 = () => {
               <span>Contact</span>
             </a>
           </li>
-          <li>
-            <a className="nav-link">
-              {/* <i className="fas fa-id-card-alt" /> */}
+          {/* <li>
+            {/* <a className="nav-link">
+              <i className="fas fa-id-card-alt" />
               <span>Leng</span>
-            </a>
+            </a> */}{/*
+            <>
             <Form.Group controlId="formBasicSelect">
+              {/* <Form.Label>Leng</Form.Label> */}
+              {/*
               <Form.Control
                 as="select"
                 onChange={e => {
                   console.log("e.target.value", e.target.value);
                   // setType(e.target.value);
                 }}
-              >
+              >              
                 <option value="spain">Es</option>
                 <option value="inglish">En</option>
                 <option value="french">Fr</option>
               </Form.Control>
             </Form.Group>
-          </li>
+                </>
+          </li> */}
         </ul>
       </header>
 

@@ -18,7 +18,7 @@ export const tony = {
   scrollToActiveNav() {
     window.addEventListener("scroll", () => {
       const sections = document.querySelectorAll("section");
-      const navLi = document.querySelectorAll(".nav-ul li");
+      const navLi = document.querySelectorAll(".nav-ul li a");
 
       let current = "";
       sections.forEach((section) => {
@@ -28,13 +28,14 @@ export const tony = {
           current = section.getAttribute("id");
         }
       });
-      navLi.forEach((li) => {
+      navLi?.forEach((li) => {
         let a = li.getElementsByTagName("a")[0];
-        if (current !== null) {
+        if (current !== null && a != undefined) {
           a.classList.remove("active");
-        }
-        if (a.getAttribute("href") == `#${current}`) {
-          a.classList.add("active");
+          console.log(a)
+          if (a?.getAttribute("href") == `#${current}`) {
+            a.classList.add("active");
+          }
         }
       });
     });
