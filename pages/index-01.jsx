@@ -10,6 +10,8 @@ import Services from "@/src/components/Services";
 import TypingAnimation from "@/src/components/TypingAnimation";
 import Footer from "@/src/layouts/Footer";
 import dynamic from "next/dynamic";
+import ParticlesBackground from "@/src/ParticlesBackground";
+
 
 const Work = dynamic(() => import("@/src/components/Work"), {
   ssr: false,
@@ -91,7 +93,7 @@ const Index1 = () => {
         <section
           id="home"
           className="home-banner-01 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url(static/img/home-banner.jpg)" }}
+          style={{ backgroundImage: "url(static/img/home-banner-3.jpg)" }}
         >
           <div className="container">
             <div className="row full-screen align-items-center p-100px-tb">
@@ -100,7 +102,7 @@ const Index1 = () => {
                   <h6>Hello there...</h6>
                   <h1>Tony Smith</h1>
                   <h2>
-                    I Am Passionate <TypingAnimation />
+                    I Am Passionate <ParticlesBackground />
                   </h2>
                   <p>
                     The namics of how users interact with interactive elements
