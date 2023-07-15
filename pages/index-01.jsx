@@ -10,6 +10,7 @@ import Services from "@/src/components/Services";
 import TypingAnimation from "@/src/components/TypingAnimation";
 import Footer from "@/src/layouts/Footer";
 import dynamic from "next/dynamic";
+import { Form } from "react-bootstrap";
 
 const Work = dynamic(() => import("@/src/components/Work"), {
   ssr: false,
@@ -82,6 +83,25 @@ const Index1 = () => {
               <i className="fas fa-id-card-alt" />
               <span>Contact</span>
             </a>
+          </li>
+          <li>
+            <a className="nav-link">
+              {/* <i className="fas fa-id-card-alt" /> */}
+              <span>Leng</span>
+            </a>
+            <Form.Group controlId="formBasicSelect">
+              <Form.Control
+                as="select"
+                onChange={e => {
+                  console.log("e.target.value", e.target.value);
+                  // setType(e.target.value);
+                }}
+              >
+                <option value="spain">Es</option>
+                <option value="inglish">En</option>
+                <option value="french">Fr</option>
+              </Form.Control>
+            </Form.Group>
           </li>
         </ul>
       </header>
