@@ -7,7 +7,7 @@ const About = () => {
             <div className="section-title">
               <h3 className="dark-color text-uppercase">ABOUT ME</h3>
               <p className="text-uppercase small">
-                A Lead UX &amp; UI designer based in Canada
+                A Lead UX &amp; UI designer based in Canadaaaaa
               </p>
             </div>
           </div>
