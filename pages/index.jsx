@@ -14,6 +14,7 @@ import { Form } from "react-bootstrap";
 
 import {LanguageContext} from './_app'
 // import LanguageContext from '../src/context/LanguageContext'
+import useLanguages from "../src/hooks/useLanguages"
 
 const Work = dynamic(() => import("@/src/components/Work"), {
   ssr: false,
@@ -21,16 +22,22 @@ const Work = dynamic(() => import("@/src/components/Work"), {
 
 const Index1 = () => {
   const [lenguage, setLanguage] = useContext(LanguageContext);
+
+  const {getLang} = useLanguages();
   
   const [toggle, setToggle] = useState(false);
+  const [lenguageValue, setlenguageValue] = useState('es');
+
+  const handleLangueSelect = (v) => {
+    let l = getLang(v)
+    setLanguage(l)
+    setlenguageValue(v)
+  }
   
   useEffect(() => {
     tony.scrollToActiveNav();
   }, []);
 
-  useEffect(() => {
-    console.log(lenguage)
-  }, [lenguage]);
   
   return (
     <Fragment>
@@ -38,7 +45,7 @@ const Index1 = () => {
         <div className="d-flex">
           <div className="navbar-brand">
             <a className="logo-text" href="index.html">
-              Tony
+              {lenguage?.sidebar.name}
             </a>
           </div>
           <button className="toggler-menu" onClick={() => setToggle(!toggle)}>
@@ -64,9 +71,9 @@ const Index1 = () => {
               <Form.Control
                 as="select"
                 onChange={e => {
-                  setLanguage(e.target.value);
+                  handleLangueSelect(e.target.value);
                 }}
-                value={lenguage}
+                value={lenguageValue}
               >              
                 <option value="es">Es</option>
                 <option value="en">En</option>
@@ -79,68 +86,45 @@ const Index1 = () => {
           <li>
             <a className="nav-link" href="#home">
               <i className="fas fa-house-damage" />
-              <span>Home</span>
+              <span>{lenguage?.sidebar.home}</span>
             </a>
           </li>
           <li>
             <a className="nav-link" href="#about">
               <i className="far fa-address-card" />
-              <span>About Me</span>
+              <span>{lenguage?.sidebar.about_me}</span>
             </a>
           </li>
           <li>
             <a className="nav-link" href="#services">
               <i className="fas fa-concierge-bell" />
-              <span>Services</span>
+              <span>{lenguage?.sidebar.services}</span>
             </a>
           </li>
           <li>
             <a className="nav-link" href="#work">
               <i className="fas fa-briefcase" />
-              <span>Portfolio</span>
+              <span>{lenguage?.sidebar.portfolio}</span>
             </a>
           </li>
           <li>
             <a className="nav-link" href="#blog">
               <i className="fas fa-blog" />
-              <span>Blog</span>
+              <span>{lenguage?.sidebar.blog}</span>
             </a>
           </li>
           <li>
             <a className="nav-link" href="#contactus">
               <i className="fas fa-id-card-alt" />
-              <span>Contact</span>
+              <span>{lenguage?.sidebar.contact}</span>
             </a>
           </li>
           <li>
             <a className="nav-link" href="#contactus">
-            <i class="fa fa-cog" aria-hidden="true"></i>
-              <span>Setting</span>
+            <i className="fa fa-cog" aria-hidden="true"></i>
+              <span>{lenguage?.sidebar.setting}</span>
             </a>
           </li>
-          {/* <li>
-            {/* <a className="nav-link">
-              <i className="fas fa-id-card-alt" />
-              <span>Leng</span>
-            </a> */}{/*
-            <>
-            <Form.Group controlId="formBasicSelect">
-              {/* <Form.Label>Leng</Form.Label> */}
-              {/*
-              <Form.Control
-                as="select"
-                onChange={e => {
-                  console.log("e.target.value", e.target.value);
-                  // setType(e.target.value);
-                }}
-              >              
-                <option value="spain">Es</option>
-                <option value="inglish">En</option>
-                <option value="french">Fr</option>
-              </Form.Control>
-            </Form.Group>
-                </>
-          </li> */}
         </ul>
       </header>
 
